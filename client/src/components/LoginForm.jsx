@@ -7,6 +7,7 @@ const LoginForm = () => {
     password: "",
   });
 
+  // When form data is changed
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -15,6 +16,7 @@ const LoginForm = () => {
     }));
   };
 
+  // When user submits teh form
   const handleSubmit = async (e) => {
     e.preventDefault();
 

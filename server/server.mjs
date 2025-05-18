@@ -7,12 +7,15 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 const app = express();
+
+// Allow backend to accept requests from React
 const corsOptions = {
   origin: ["http://localhost:3000"],
   credentials: true,
 };
 app.use(cors(corsOptions));
 
+// Read the .env file
 dotenv.config();
 
 app.use(express.json());

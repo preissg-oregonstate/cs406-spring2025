@@ -1,6 +1,7 @@
 import axios from "axios";
 
 function AccountDropdown({ loggedIn, setLoggedIn }) {
+  // If user hits logout button
   const handleLogout = () => {
     axios
       .post("http://localhost:5150/api/auth/logout", null, {

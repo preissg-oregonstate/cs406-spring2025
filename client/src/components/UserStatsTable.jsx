@@ -4,8 +4,8 @@ import axios from "axios";
 const UserStatsTable = () => {
   const [username, setUsername] = useState("");
 
+  // When component mounts, get info from token
   useEffect(() => {
-    // Get user info from token
     axios
       .get("http://localhost:5150/api/auth/me", { withCredentials: true })
       .then((res) => {

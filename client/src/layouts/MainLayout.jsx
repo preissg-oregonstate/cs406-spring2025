@@ -7,6 +7,7 @@ import axios from "axios";
 const MainLayout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
+  // When component mounts, get info from token
   useEffect(() => {
     axios
       .get("http://localhost:5150/api/auth/me", { withCredentials: true })

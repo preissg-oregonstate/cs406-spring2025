@@ -8,6 +8,7 @@ const RegisterForm = () => {
     password: "",
   });
 
+  // If form data changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -16,6 +17,7 @@ const RegisterForm = () => {
     }));
   };
 
+  // If user submits form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
