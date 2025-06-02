@@ -1,11 +1,13 @@
 import LeaderboardDropDown from "./LeaderboardDropdown";
 import AccountDropdown from "./AccountDropdown";
 
-const Navbar = ({ loggedIn, setLoggedIn }) => {
+const Navbar = () => {
   return (
     <header>
       <div className="site-header-container">
         <LeaderboardDropDown />
+
+        {/* Site Logo */}
         <div className="site-logo-container">
           <a href="/">
             <img
@@ -14,7 +16,8 @@ const Navbar = ({ loggedIn, setLoggedIn }) => {
             />
           </a>
         </div>
-        <AccountDropdown loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+
+        <AccountDropdown />
       </div>
     </header>
   );

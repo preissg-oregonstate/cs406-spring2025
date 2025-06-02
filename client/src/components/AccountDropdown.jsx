@@ -1,14 +1,28 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
 
-function AccountDropdown({ loggedIn, setLoggedIn }) {
-  // If user hits logout button
-  const handleLogout = () => {
+function AccountDropdown() {
+  const navigate = useNavigate();
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+
+  const handleAccountBtnClick = () => {
+    navigate(loggedIn ? "/account" : "/register");
+  };
+
+  const handleLoginBtnClick = () => {
+    navigate("/login");
+  };
+
+  const handleLogoutBtnClick = () => {
     axios
       .post("http://localhost:5150/api/auth/logout", null, {
         withCredentials: true,
       })
       .then(() => {
         setLoggedIn(false);
+        navigate("/logout");
       })
       .catch((error) => {
         console.error("Error during logout:", error);
@@ -23,17 +37,30 @@ function AccountDropdown({ loggedIn, setLoggedIn }) {
           <tbody>
             <tr>
               <td>
-                <a href={loggedIn ? "/account" : "/register"}>
+                {/* If user logged in, display stats button. Otherwise register button */}
+                <button
+                  className="navbar-button"
+                  onClick={handleAccountBtnClick}
+                >
                   {loggedIn ? "Stats" : "Register"}
-                </a>
+                </button>
               </td>
               <td>
+                {/* Display Log In/Out button depending if user is logged in or not */}
                 {loggedIn ? (
-                  <button onClick={handleLogout} className="logout-button">
+                  <button
+                    onClick={handleLogoutBtnClick}
+                    className="navbar-button"
+                  >
                     Log Out
                   </button>
                 ) : (
-                  <a href="/login">Log In</a>
+                  <button
+                    onClick={handleLoginBtnClick}
+                    className="navbar-button"
+                  >
+                    Log In
+                  </button>
                 )}
               </td>
             </tr>

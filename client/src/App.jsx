@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import MainLayout from "./layouts/MainLayout";
+import LogoutPage from "./pages/LogoutPage";
 import GamePage from "./pages/GamePage";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "leaderboards",
         element: <LeaderboardPage />,
+      },
+      {
+        path: "logout",
+        element: <LogoutPage />,
       },
       {
         path: "/games/:gameName",

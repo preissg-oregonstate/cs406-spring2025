@@ -7,15 +7,13 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 const app = express();
-
-// Allow backend to accept requests from React
 const corsOptions = {
   origin: ["http://localhost:3000"],
   credentials: true,
 };
 app.use(cors(corsOptions));
 
-// Read the .env file
+// Initialize dotenv only once
 dotenv.config();
 
 app.use(express.json());
@@ -29,11 +27,17 @@ app.use(express.static(path.join(__dirname, "public")));
 // Parse cookies sent from client
 app.use(cookieParser());
 
+// Authorization Route
 import authRoutes from "./routes/authRoutes.mjs";
 app.use("/api/auth", authRoutes);
 
-// import userRoutes from "./routes/userRoutes.mjs";
-// app.use("/api/user", userRoutes);
+// User Route
+import userRoutes from "./routes/userRoutes.mjs";
+app.use("/api/user", userRoutes);
+
+// Leaderboard Route
+import leaderboardRoutes from "./routes/leaderboardRoutes.mjs";
+app.use("/api/leaderboard", leaderboardRoutes);
 
 // 404 handler
 app.use((req, res) => {

@@ -11,13 +11,13 @@ const router = express.Router();
 // Register a new user
 router.post("/register-user", registerUser);
 
-// Log user in
+// Log a user in
 router.post("/login", loginUser);
 
-// Log user out
+// Log a user out
 router.post("/logout", logoutUser);
 
-// Authenticate the user
+// Authenticate a user
 router.get("/me", authenticateJWT, authenticateUser);
 
 export default router;

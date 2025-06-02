@@ -52,6 +52,10 @@ select {
   margin: auto;
 }
 
+.body-no-scroll {
+  overflow: hidden;
+}
+
 /************** Navbar ***************/
 
 .site-header-container {
@@ -112,8 +116,7 @@ select {
   border-radius: 10px;
 }
 
-.nav-dropdown a,
-.logout-button {
+.navbar-button {
   color: rgb(81, 145, 255);
   text-decoration: none;
   font-size: 20px;
@@ -122,12 +125,12 @@ select {
   text-align: center;
 }
 
-.logout-button {
+.navbar-button {
   background-color: transparent;
   border: 0px solid transparent;
 }
 
-.logout-button:hover {
+.navbar-button:hover {
   cursor: pointer;
 }
 
@@ -175,7 +178,7 @@ select {
 .user-stats-game-table {
   box-shadow: 10px 20px 90px 20px rgba(40, 155, 255, 0.2);
   border: 3px solid rgb(24, 67, 175);
-  width: clamp(500px, 80%, 1300px);
+  width: clamp(500px, 80%, 800px);
   margin: auto;
   text-align: center;
   border-radius: 20px;
@@ -195,6 +198,10 @@ select {
 .user-stats-game-table td {
   font-size: 1.15rem;
   padding: 10px;
+}
+
+.user-leaderboard-score {
+  background-color: rgba(24, 67, 175, 0.597);
 }
 
 /************** Account Stat Page *************/
@@ -227,6 +234,14 @@ select {
 
 .user-stats-game-table {
   width: 100%;
+}
+
+/********* Individual Game Page ********/
+
+.game-highscore {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 /*************** Form Table ************/
@@ -276,7 +291,7 @@ form {
   outline: 1px solid rgba(115, 188, 252, 0.479);
 }
 
-form button {
+.form-button {
   margin: 20px 0px;
   padding: 5px;
   border-radius: 5px;
@@ -284,8 +299,89 @@ form button {
   background-color: rgb(175, 204, 255);
 }
 
-form button:hover {
+.form-button:hover {
   cursor: pointer;
+}
+
+.wrong-info {
+  color: red;
+}
+
+/***************** Welcome Message **************/
+.welcome-message {
+  box-shadow: 10px 20px 90px 20px rgba(40, 155, 255, 0.2);
+  border: 3px solid rgb(24, 67, 175);
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  border-radius: 20px;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.welcome-message h2 {
+  color: rgb(81, 145, 255);
+  margin: 20px 0px;
+}
+
+/***************** Game Modal **************/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  border: 3px solid rgb(24, 67, 175);
+  background-color: black;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 350px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin: 10px 0px;
+  text-decoration: underline;
+  color: rgb(81, 145, 255);
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  color: rgb(167, 199, 255);
+}
+
+.modal-button {
+  margin: 10px 0px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: rgb(175, 204, 255);
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  border: 2px solid rgb(24, 67, 175);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /***************** Footer **************/

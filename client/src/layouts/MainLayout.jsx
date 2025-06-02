@@ -1,13 +1,15 @@
+import { useEffect, useContext } from "react";
 import { Outlet } from "react-router-dom";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useEffect, useState } from "react";
-import axios from "axios";
+
+import { AuthContext } from "../context/AuthProvider";
 
 const MainLayout = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const { setLoggedIn } = useContext(AuthContext);
 
-  // When component mounts, get info from token
+  // Check if user is currently authenticated when the component mounts
   useEffect(() => {
     axios
       .get("http://localhost:5150/api/auth/me", { withCredentials: true })
@@ -19,11 +21,11 @@ const MainLayout = () => {
         console.error("Error during auth check:", err);
         setLoggedIn(false);
       });
-  }, []);
+  }, [setLoggedIn]);
 
   return (
     <div className="primary-site-container">
-      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+      <Navbar />
       <Outlet />
       <Footer />
     </div>

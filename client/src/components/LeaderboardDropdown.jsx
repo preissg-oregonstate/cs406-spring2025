@@ -1,4 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import LeaderboardDropBtn from "./LeaderboardDropBtn";
+
 function LeaderboardDropdown() {
+  const navigate = useNavigate();
+
+  const handleClick = (game) => {
+    navigate("/leaderboards", { state: { game } });
+  };
+
   return (
     <div className="nav-dropdown-container">
       <p className="dropdown-name">Leaderboards</p>
@@ -6,20 +15,12 @@ function LeaderboardDropdown() {
         <table className="dropdown-table">
           <tbody>
             <tr>
-              <td>
-                <a href="/leaderboards">Pacman</a>
-              </td>
-              <td>
-                <a href="/leaderboards">Tetris</a>
-              </td>
+              <LeaderboardDropBtn handleClick={handleClick} game={"Pacman"} />
+              <LeaderboardDropBtn handleClick={handleClick} game={"Tetris"} />
             </tr>
             <tr>
-              <td>
-                <a href="/leaderboards">Snake</a>
-              </td>
-              <td>
-                <a href="/leaderboards">Set</a>
-              </td>
+              <LeaderboardDropBtn handleClick={handleClick} game={"Snake"} />
+              <LeaderboardDropBtn handleClick={handleClick} game={"Set"} />
             </tr>
           </tbody>
         </table>
